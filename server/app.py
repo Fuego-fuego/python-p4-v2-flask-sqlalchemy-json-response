@@ -14,24 +14,11 @@ app.json.compact = False
 migrate = Migrate(app, db)
 db.init_app(app)
 
-
 @app.route('/')
 def index():
     body = {'message':"welcome to pets dictionary!"}
     return make_response(body,200)
-    
 
-
-@app.route('/demo_json')
-def demo_json():
-    pet = Pet.query.first()
-    pet_dict = {
-        'id':pet.id,
-        'name':pet.name,
-        'species':pet.species
-    }
-    
-    return make_response(pet_dict, 200)
 
 @app.route('/pets/<int:id>')
 def pet_by_id(id):
